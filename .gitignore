@@ -99,7 +99,7 @@ sysinfo.txt
 #マテリアルファイルは除外しないほうが面倒が少ない
 #*.mat
 
-#独自に入れた書式・アセットやレジストリで思いもの
+#独自に入れた書式・アセットやレジストリで重いもの
 Assets/TextMesh Pro
 Assets/Sounds
 Assets/Fonts

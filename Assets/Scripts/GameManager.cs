@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;      //シーンの切り替えに必要
 
 public enum GameState           // GameStateという名前の型を自作する。4つのゲームの状態しか持てないものにする（列挙型）
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 {
     // ゲームの状態
     public static GameState gameState;
+    public string nextSceneName;            // 次のシーン名
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,5 +25,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //リスタート
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //次へ
+    public void Next()
+    {
+        SceneManager.LoadScene(nextSceneName);
     }
 }
