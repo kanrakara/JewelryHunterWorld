@@ -22,6 +22,10 @@ public class UIController : MonoBehaviour
     GameObject player;
     PlayerController playerController;
 
+    // スコア追加
+    public GameObject scoreText;        // スコアテキスト
+    public int stageScore = 0;          // ステージスコア
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +48,8 @@ public class UIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerController = player.GetComponent<PlayerController>();
 
+        //スコア追加
+        UpdateScore();
     }
 
     // 画像を非表示にする自作メソッド（Invoke がメソッドしか指定できないので）
@@ -66,10 +72,19 @@ public class UIController : MonoBehaviour
             mainImage.GetComponent<Image>().sprite = gameClearSpr;  // 画像を設定する
 
             //時間カウントを停止
-            if(timeController != null)
+            if (timeController != null)
             {
                 timeController.IsTimeOver();        //停止フラグをON
+
+                // 整数に型変換することで小数を切り捨てる。(int)で型変換。
+                int time = (int)timeController.GetDisplayTime();
+                GameManager.totalScore += time * 10;    // 残り時間をスコアに加える。static変数なので、いきなり呼び出せ、直接値をいじれる。
             }
+
+            GameManager.totalScore += stageScore; //トータルスコアの最終確定
+            stageScore = 0; //ステージスコアリセット
+
+            UpdateScore();  //スコア表示の更新
         }
         else if (GameManager.gameState == GameState.GameOver)
         {
@@ -114,5 +129,20 @@ public class UIController : MonoBehaviour
             }
         }
 
+    }
+
+    // 現在スコアのUI表示更新。引数なしのverも作ってある。初期状態や、ステージ変更時辺りの表示で使う
+    void UpdateScore()
+    {
+        int currentScore = stageScore + GameManager.totalScore;
+        scoreText.GetComponent<TextMeshProUGUI>().text = currentScore.ToString();
+    }
+
+    // プレイヤーから呼び出される 獲得スコアを追加した上でのUI表示更新
+    public void UpdateScore(int score)
+    {
+        stageScore += score;
+        int currentScore = stageScore + GameManager.totalScore;
+        scoreText.GetComponent<TextMeshProUGUI>().text = currentScore.ToString();
     }
 }
