@@ -45,7 +45,7 @@ public class MovingBlock : MonoBehaviour
             if (!isReverse)
             {
                 //スタート～エンド間の、今いるべき進捗をmovepで提示
-                transform.position = Vector2.Lerp(startPos, endPos, movep);  //正移動                
+                transform.position = Vector2.Lerp(startPos, endPos, movep);  //正移動。補間関数（メソッド）                
             }
             else　//逆向きのフラグが立っている
             {
@@ -85,7 +85,8 @@ public class MovingBlock : MonoBehaviour
         //接触したのがプレイヤーなら移動床の子にする
         if (collision.gameObject.tag == "Player")
         {
-            //プレイヤーの親を自分（床）にする
+            //プレイヤーの親を自分（床）にする。
+            //collision.transform（プレイヤのこと）が、親を決める　SetParent() 。()はthis.transform 型を一致させる（transform）こと
             collision.transform.SetParent(transform);
 
             //乗った時に動くフラグが立っているなら
@@ -95,7 +96,7 @@ public class MovingBlock : MonoBehaviour
             }
         }
     }
-    //接触が終わったら処理
+    //接触が終わったら処理。OnCollisionExit2D 。Exit 。
     void OnCollisionExit2D(Collision2D collision)
     {
         //接触したのがプレイヤーなら
@@ -105,7 +106,7 @@ public class MovingBlock : MonoBehaviour
             collision.transform.SetParent(null);
         }
     }
-    //移動範囲表示
+    //移動範囲表示。Gizmosを使う。書き方の方法として、覚えておこう
     void OnDrawGizmosSelected()
     {
         Vector2 fromPos;

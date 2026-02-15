@@ -35,10 +35,14 @@ public class CannonController : MonoBehaviour
                 if (passedTimes > delayTime)
                 {
                     passedTimes = 0;        //時間を0にリセット
-                                            //砲弾をプレハブから作る
+                                            //砲弾をプレハブから作る。Instantiate メソッド(どのオブジェクト, どこに, 回転）
+                                            //Transformって3つありますが、position, scale はVector3 型、rotation はQuaternion 型なので注意。
+                                            //Quaternion.identity で、0,0,0 を表す。
                     Vector2 pos = new Vector2(
                         gateTransform.position.x,
                         gateTransform.position.y);
+
+                    //メソッドなので右辺だけで成り立つが、生成したオブジェクトはまだ使うことがあるので、左辺を書いて変数に格納している。2行を1行に省略している形
                     GameObject obj = Instantiate(
                         objPrefab,
                         pos,
@@ -46,10 +50,13 @@ public class CannonController : MonoBehaviour
                     //砲身が向いている方向に発射する
                     Rigidbody2D rbody = obj.GetComponent<Rigidbody2D>();
 
-                    float angleZ = transform.localEulerAngles.z - 180;
+                    //AddForce はVector2(x,y)型のため、x,y 座標を出して方向とする
+                    float angleZ = transform.localEulerAngles.z - 180;  //絵が左向きで基準の方向が逆のため、-180°している
+                    //半径1の円（単位円）として考える。sin, cos がそのまま使えるので。
                     float x = Mathf.Cos(angleZ * Mathf.Deg2Rad); //角度に対して底辺を取得
                     float y = Mathf.Sin(angleZ * Mathf.Deg2Rad); //角度に対して垂直辺を取得
                     Vector2 v = new Vector2(x, y) * fireSpeed;
+                    //ここで出した方向は、（単位円のため）距離1になるので、Impulse を掛けて速さを変更できるようにしている
                     rbody.AddForce(v, ForceMode2D.Impulse);
                 }
             }
