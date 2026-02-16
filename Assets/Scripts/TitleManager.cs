@@ -1,10 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;      //シーンの切り替えに必要
 
 public class TitleManager : MonoBehaviour
 {
     public string sceneName;        //読み込むシーン名
 
+    //入力方法③
+    //On + [アクション名](InputValue) でメソッドを定義する
+    //InputSystem_Actionsで決めたUIマップのSubmitアクションが押されたとき
+        void OnSubmit(InputValue value)
+    {
+        Load();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     public AudioClip meGameOver;            //ゲームオーバーの音
     AudioSource soundPlayer;                //AudioSource型の変数
 
+    public bool isGameClear = false;        //ゲームクリア判定
+    public bool isGameOver = false;         //ゲームオーバー判定
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,12 +42,14 @@ public class GameManager : MonoBehaviour
         {
             soundPlayer.Stop();             //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameClear);       //ゲームクリアの音を1回だけ鳴らす
+            isGameClear = true;             //クリアフラグ
             gameState = GameState.GameEnd;      //ゲームの状態を更新
         }
         else if(gameState == GameState.GameOver)
         {
             soundPlayer.Stop();             //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameOver);       //ゲームオーバーの音を1回だけ鳴らす
+            isGameOver = true;              //ゲームオーバーフラグ
             gameState = GameState.GameEnd;      //ゲームの状態を更新
         }
     }
@@ -58,5 +64,25 @@ public class GameManager : MonoBehaviour
     public void Next()
     {
         SceneManager.LoadScene(nextSceneName);
+    }
+
+    //PlayerController経由で「UIマップのSubmit」が押されたとき呼び出される
+    public void GameEnd()
+    {
+        //UI表示が終わって最後の状態であれば
+        if(gameState == GameState.GameEnd)
+        {
+            //ゲームクリアの状態なら
+            if (isGameClear)
+            {
+                Next();
+            }
+
+            //ゲームオーバーの状況なら
+            else if (isGameOver)
+            {
+                Restart();
+            }
+        }
     }
 }
