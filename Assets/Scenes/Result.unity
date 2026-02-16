@@ -234,7 +234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 2530564911472380330, guid: 04398ab707563a2478f47cd1b0bb2eea, type: 3}
+  m_Sprite: {fileID: 2530564911472380330, guid: 4e0c26bddd852ec4281af83dd124da99, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 272f6d14-89ba-496f-b7ff-215263d3219f
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &712841359
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -317220311027958270, guid: c30c1db25cc1a464394044b6800ce0f2, type: 3}
+  m_Sprite: {fileID: -317220311027958270, guid: 54df54ac6ee92f2469e8fc751db934ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6533585097555431621, guid: 8999bf831b81bf24e90d3e0c4ef0c54d, type: 3}
+  m_Sprite: {fileID: -6533585097555431621, guid: 7a4c1caf3377e454a8c5303ae1f82197, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

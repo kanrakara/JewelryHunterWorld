@@ -678,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0284dedaa5f3c53409c6175382f5c3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  nextSceneName: Base
+  nextSceneName: Result
 --- !u!4 &587298346
 Transform:
   m_ObjectHideFlags: 0

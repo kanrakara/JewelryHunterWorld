@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
+    //型注意、ゲームオブジェクト（ScoreText）についているコンポーネント（TextMeshProUGUI）
     public TextMeshProUGUI scoreText;
     public string sceneName;
 
@@ -18,7 +19,7 @@ public class ResultManager : MonoBehaviour
     //{
     //    submitAction.Disable(); //InputActionを無効化
     //}
-
+    
     void OnSubmit(InputValue value)
     {
         Load();
