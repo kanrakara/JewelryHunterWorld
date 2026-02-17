@@ -1231,7 +1231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2603caf9652d6384fab4d4b42eb0b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleManager
-  sceneName: Base
+  sceneName: Stage1
 --- !u!114 &2139370625
 MonoBehaviour:
   m_ObjectHideFlags: 0

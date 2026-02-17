@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeController
   isCountDown: 1
-  gameTime: 30
+  gameTime: 40
 --- !u!1 &3556326386429075279
 GameObject:
   m_ObjectHideFlags: 0
