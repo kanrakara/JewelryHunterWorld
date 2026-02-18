@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;      //シーンの切り替えに必要
 
@@ -32,16 +33,15 @@ public class GameManager : MonoBehaviour
 
     //所持アイテム　鍵の管理
     public static int keys = 1;
-
     //どのステージの鍵が入手済みかを管理
     public static Dictionary<string, bool> keyGot;      //シーン名, true/galse 
-
+ 
     //所持アイテム　矢の管理
-    public static int allows = 10;
+    public static int arrows = 10;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         gameState = GameState.InGame;       //ステータスをゲーム中にする
         soundPlayer = GetComponent<AudioSource>();      //AudioSourceを参照する
@@ -50,6 +50,14 @@ public class GameManager : MonoBehaviour
         if (keyGot == null)
         {
             keyGot = new Dictionary<string, bool>();
+        }
+
+        //もしも現シーン名がDictionary(KeyGot)に登録されていなければ。
+        //（右側は現在のシーンの名前を取り出すこと。それをContainsKeyにいれると、辞書内に指定のキーが存在するかを判別、true,falseで返す）
+        if (!(keyGot.ContainsKey(SceneManager.GetActiveScene().name)))
+        {
+            //Dictionary(keyGot)に登録しておく（現シーン名,鍵の取得情報false）
+            keyGot.Add(SceneManager.GetActiveScene().name, false);
         }
     }
 

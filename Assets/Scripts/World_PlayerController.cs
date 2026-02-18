@@ -13,6 +13,20 @@ public class World_PlayerController : MonoBehaviour
     Rigidbody2D rbody;
     Animator animator;
 
+
+    bool isActionButtonPressed;     //ActionぼButtonが押されたらtrue
+    public bool IsActionButtonPressed       //カプセル化。privateで触れないisActionB～ に干渉するために、同名の変数とそのプロパティを設定
+    {
+        get { return isActionButtonPressed; }
+        set { isActionButtonPressed = value; }
+    }
+
+    //On + Actionsの名前　で呼び出せる。InputValueは状態を返す。
+    void OnActionButton(InputValue value)
+    {
+        IsActionButtonPressed = value.isPressed; // ボタンが押され続けている間はtrue
+    }
+
     //InputSystemの入力値を変数moveVecにVector2型で代入
     void OnMove(InputValue value)
     {
