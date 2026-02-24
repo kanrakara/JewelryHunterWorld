@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 87dc17ff816e2d145a68e2a52bae86c7
   - enabled: 1
+    path: Assets/Scenes/WorldMap.unity
+    guid: aa86f837b51f29c498293882edbd0b7c
+  - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: 41876723050ada84f86f1013baf99892
   - enabled: 1
@@ -20,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 34b6bf700120f76469e111e79f8f725b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Base.unity
     guid: 4d031ad21071de64ca357faaff89e876
   m_configObjects:

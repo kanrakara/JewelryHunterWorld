@@ -413,7 +413,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 652009160}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2139370624}
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
+        m_MethodName: ContinueLoad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ContinueLoad
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &652009160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,7 +1381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2603caf9652d6384fab4d4b42eb0b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TitleManager
-  sceneName: Stage1
+  sceneName: WorldMap
+  startButton: {fileID: 1721248150}
+  continueButton: {fileID: 652009157}
 --- !u!114 &2139370625
 MonoBehaviour:
   m_ObjectHideFlags: 0

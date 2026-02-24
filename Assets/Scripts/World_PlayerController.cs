@@ -14,7 +14,7 @@ public class World_PlayerController : MonoBehaviour
     Animator animator;
 
 
-    bool isActionButtonPressed;     //ActionぼButtonが押されたらtrue
+    bool isActionButtonPressed;     //ActionButtonが押されたらtrue
     public bool IsActionButtonPressed       //カプセル化。privateで触れないisActionB～ に干渉するために、同名の変数とそのプロパティを設定
     {
         get { return isActionButtonPressed; }
@@ -33,7 +33,7 @@ public class World_PlayerController : MonoBehaviour
         moveVec = value.Get<Vector2>();
     }
 
-    //INputsystemの入力値moveVecからプレイヤーの角度を算出
+    //Inputsystemの入力値moveVecからプレイヤーの角度を算出
     float GetAngle()
     {
         float angle = angleZ;

@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0284dedaa5f3c53409c6175382f5c3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  nextSceneName: Result
+  nextSceneName: WorldMap
   meGameClear: {fileID: 8300000, guid: 4599b43f5ae60534185d19db75dfb945, type: 3}
   meGameOver: {fileID: 8300000, guid: de56ecb8d389e49438a5f25058c3d328, type: 3}
   isGameClear: 0
@@ -746,6 +746,9 @@ MonoBehaviour:
   timeText: {fileID: 483347423}
   scoreText: {fileID: 977167699}
   stageScore: 0
+  keyText: {fileID: 0}
+  arrowText: {fileID: 0}
+  lifeSlider: {fileID: 0}
 --- !u!114 &668860299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3540,6 +3543,10 @@ MonoBehaviour:
   goalAnime: Goal
   deadAnime: Dead
   score: 0
+  shootSpeed: 12
+  shootDelay: 0.25
+  arrowPrefab: {fileID: 0}
+  gate: {fileID: 0}
 --- !u!95 &1197555306
 Animator:
   serializedVersion: 7
