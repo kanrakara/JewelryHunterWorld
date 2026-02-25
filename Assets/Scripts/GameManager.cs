@@ -21,9 +21,9 @@ public class GameManager : MonoBehaviour
     public static int totalScore;           //合計スコア。各シーンをまたいで同じものを使い続けたいので、static を使用。
 
     //サウンド関連
-    public AudioClip meGameClear;           //ゲームクリアの音
-    public AudioClip meGameOver;            //ゲームオーバーの音
-    AudioSource soundPlayer;                //AudioSource型の変数
+    //public AudioClip meGameClear;           //ゲームクリアの音
+    //public AudioClip meGameOver;            //ゲームオーバーの音
+    //AudioSource soundPlayer;                //AudioSource型の変数
 
     public bool isGameClear = false;        //ゲームクリア判定
     public bool isGameOver = false;         //ゲームオーバー判定
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         gameState = GameState.InGame;       //ステータスをゲーム中にする
-        soundPlayer = GetComponent<AudioSource>();      //AudioSourceを参照する
+        //soundPlayer = GetComponent<AudioSource>();      //AudioSourceを参照する
 
         //keyGotが何もない状態だったときのみ初期化
         if (keyGot == null)
@@ -61,21 +61,51 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+
+        if (currentScene != "WorldMap")
+        {
+            SoundManager.currentSoundManager.restartBGM = true;
+            if (currentScene == "Boss")
+            {
+                SoundManager.currentSoundManager.StopBGM();
+                SoundManager.currentSoundManager.PlayBGM(BGMType.InBoss);
+            }
+            else
+            {
+                SoundManager.currentSoundManager.StopBGM();
+                SoundManager.currentSoundManager.PlayBGM(BGMType.InGame);
+            }
+        }
+        else if (SoundManager.currentSoundManager.restartBGM)
+        {
+            SoundManager.currentSoundManager.StopBGM();
+            SoundManager.currentSoundManager.PlayBGM(BGMType.Title);
+        }
+    }
+
+
     // Update is called once per frame
     void LateUpdate()
     {
         if (gameState == GameState.GameClear)
         {
-            soundPlayer.Stop();             //ステージ曲を止める
-            soundPlayer.PlayOneShot(meGameClear);       //ゲームクリアの音を1回だけ鳴らす
+            //soundPlayer.Stop();             //ステージ曲を止める
+            SoundManager.currentSoundManager.StopBGM();     // 自作メソッド
+            //soundPlayer.PlayOneShot(meGameClear);       //ゲームクリアの音を1回だけ鳴らす
+            SoundManager.currentSoundManager.PlayBGM(BGMType.GameClear);
             isGameClear = true;             //クリアフラグ
             Invoke("GameStatusChange", 0.02f);
             //gameState = GameState.GameEnd;      //ゲームの状態を更新
         }
         else if (gameState == GameState.GameOver)
         {
-            soundPlayer.Stop();             //ステージ曲を止める
-            soundPlayer.PlayOneShot(meGameOver);       //ゲームオーバーの音を1回だけ鳴らす
+            //soundPlayer.Stop();             //ステージ曲を止める
+            SoundManager.currentSoundManager.StopBGM();
+            //soundPlayer.PlayOneShot(meGameOver);       //ゲームオーバーの音を1回だけ鳴らす
+            SoundManager.currentSoundManager.PlayBGM(BGMType.GameOver);
             isGameOver = true;              //ゲームオーバーフラグ
             Invoke("GameStatusChange", 0.02f);
             //gameState = GameState.GameEnd;      //ゲームの状態を更新

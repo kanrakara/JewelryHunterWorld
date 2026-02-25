@@ -29,6 +29,10 @@ public class TitleManager : MonoBehaviour
         {
             continueButton.GetComponent<Button>().interactable = false;     // ボタン機能を無効
         }
+
+        // SoundManagerクラス自体をstaticしているから、このように指定できる
+        SoundManager.currentSoundManager.StopBGM();     // BGMをストップ
+        SoundManager.currentSoundManager.PlayBGM(BGMType.Title);        // タイトルのBGMを再生
     }
 
     // Update is called once per frame
