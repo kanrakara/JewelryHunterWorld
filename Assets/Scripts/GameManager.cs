@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public static int keys = 1;
     //どのステージの鍵が入手済みかを管理
     public static Dictionary<string, bool> keyGot;      //シーン名, true/galse 
- 
+
     //所持アイテム　矢の管理
     public static int arrows = 10;
 
@@ -64,21 +64,29 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(gameState == GameState.GameClear)
+        if (gameState == GameState.GameClear)
         {
             soundPlayer.Stop();             //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameClear);       //ゲームクリアの音を1回だけ鳴らす
             isGameClear = true;             //クリアフラグ
-            gameState = GameState.GameEnd;      //ゲームの状態を更新
+            Invoke("GameStatusChange", 0.02f);
+            //gameState = GameState.GameEnd;      //ゲームの状態を更新
         }
-        else if(gameState == GameState.GameOver)
+        else if (gameState == GameState.GameOver)
         {
             soundPlayer.Stop();             //ステージ曲を止める
             soundPlayer.PlayOneShot(meGameOver);       //ゲームオーバーの音を1回だけ鳴らす
             isGameOver = true;              //ゲームオーバーフラグ
-            gameState = GameState.GameEnd;      //ゲームの状態を更新
+            Invoke("GameStatusChange", 0.02f);
+            //gameState = GameState.GameEnd;      //ゲームの状態を更新
         }
     }
+
+    void GameStatusChange()
+    {
+        gameState = GameState.GameEnd;
+    }
+
 
     //リスタート
     public void Restart()
@@ -97,7 +105,7 @@ public class GameManager : MonoBehaviour
     public void GameEnd()
     {
         //UI表示が終わって最後の状態であれば
-        if(gameState == GameState.GameEnd)
+        if (gameState == GameState.GameEnd)
         {
             //ゲームクリアの状態なら
             if (isGameClear)
