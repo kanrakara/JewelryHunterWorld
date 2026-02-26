@@ -3081,6 +3081,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8541525134145413403, guid: 9e2198391247acb46b419274b2ced2ef, type: 3}
+      propertyPath: camRight
+      value: 48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
