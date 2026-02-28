@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Item/ScoreItem", fileName = "ScoreItem")]
 public class ItemData : ScriptableObject
 {
-    public int value = 0;               //ƒAƒCƒeƒ€’l
-    public string itemName = "";        //ƒAƒCƒeƒ€–¼
-    public Sprite itemSprite;           //ƒAƒCƒeƒ€‰æ‘œ
+    public int value = 0;               //ã‚¢ã‚¤ãƒ†ãƒ å€¤
+    public string itemName = "";        //ã‚¢ã‚¤ãƒ†ãƒ å
+    public Sprite itemSprite;           //ã‚¢ã‚¤ãƒ†ãƒ ç”»åƒ
 }
