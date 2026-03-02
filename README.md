@@ -9,6 +9,8 @@
 Unityで2Dゲームを学ぶに当たって、基本的な機能が網羅されている作品となるように頑張りました。ワールドマップ上で好きなステージのロックを解除して挑戦できることで、プレイする度に異なる遊び方、攻略の仕方ができるように工夫しました。  
 アクションゲームとしての楽しさが出るようにたくさんのギミックをちりばめています。
 
+[サンプルゲームをプレイ](https://kanrakara.github.io/jewelry_web/)
+
 ### 作品の遊び方
 タイトル→ワールドマップ→ロックの掛かっていないステージ選択  
 ステージ中の鍵を探す→ワールドマップでステージのロックを解除して攻略  
@@ -50,13 +52,13 @@ SavaDataというシリアライズ化したデータコンテナをSaveDataMana
 
 ```C#
 //SaveDataManager.csを一部抜粋
-//JsonUtility で扱うためのシリアライズ化したクラス
+//JsonUtility で扱うためのシリアライズしたクラス
 [System.Serializable] 
 public class SaveData
 {
    //略
 }
-//シリアライズ化したSaveDataクラスを扱っていくマネージャー
+//シリアライズしたSaveDataクラスを扱っていくマネージャー
 public class SaveDataManager : MonoBehaviour
 {    
     // ゲームデータをPlayerPrefsに保存するメソッド
